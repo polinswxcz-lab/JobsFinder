@@ -1,0 +1,38 @@
+{% extends 'jobs_proj/base.html' %}
+
+{% block content %}
+
+<h1>
+{{ vacancy.title }}
+</h1>
+
+<p>
+Компанія:
+{{ vacancy.company }}
+</p>
+
+<p>
+Місто:
+{{ vacancy.location }}
+</p>
+
+<p>
+Зарплата:
+{{ vacancy.salary }}
+</p>
+
+<p>
+Досвід:
+{{ vacancy.experience }}
+</p>
+
+<p>
+{{ vacancy.description }}
+</p>
+
+<p>
+Дата:
+{{ vacancy.created_at }}
+</p>
+
+{% endblock %}

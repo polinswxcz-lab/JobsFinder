@@ -1,0 +1,37 @@
+{% extends 'jobs_proj/base.html' %}
+
+{% block content %}
+
+<h1>
+JobFinder
+</h1>
+
+<h2>
+Останні вакансії
+</h2>
+
+{% for vacancy in vacancies %}
+
+<p>
+
+{{ vacancy.title }}
+
+</p>
+
+{% endfor %}
+
+<h2>
+Останні статті
+</h2>
+
+{% for article in articles %}
+
+<p>
+
+{{ article.title }}
+
+</p>
+
+{% endfor %}
+
+{% endblock %}

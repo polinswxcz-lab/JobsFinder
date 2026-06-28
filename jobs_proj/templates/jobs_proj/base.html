@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+{% load static %}
+
+<link
+rel="stylesheet"
+href="{% static 'jobs_proj/style.css' %}"
+>
+
+<title>JobFinder</title>
+
+</head>
+
+<body>
+
+<nav>
+
+<a href="/">
+Головна
+</a>
+
+|
+
+<a href="/vacancies/">
+Вакансії
+</a>
+
+|
+
+<a href="/articles/">
+Статті
+</a>
+
+|
+
+<a href="/add-article/">
+Додати статтю
+</a>
+
+|
+
+<a href="/about/">
+Про нас
+</a>
+
+</nav>
+
+<hr>
+
+{% block content %}
+{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{% extends 'jobs_proj/base.html' %}
+
+{% block content %}
+
+<h1>
+Статті
+</h1>
+
+{% for article in articles %}
+
+<div>
+
+<h2>
+
+<a href="/articles/{{ article.id }}/">
+
+{{ article.title }}
+
+</a>
+
+</h2>
+
+<p>
+
+{{ article.short_description }}
+
+</p>
+
+<hr>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'jobs_proj/base.html' %}
+
+{% block content %}
+
+<h1>
+Всі вакансії
+</h1>
+
+{% for vacancy in vacancies %}
+
+<div>
+
+<h2>
+{{ vacancy.title }}
+</h2>
+
+<p>
+Компанія:
+{{ vacancy.company }}
+</p>
+
+<p>
+Місто:
+{{ vacancy.location }}
+</p>
+
+<p>
+Зарплата:
+{{ vacancy.salary }}
+</p>
+
+<a href="/vacancy/{{ vacancy.id }}/">
+Детальніше
+</a>
+
+<hr>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
