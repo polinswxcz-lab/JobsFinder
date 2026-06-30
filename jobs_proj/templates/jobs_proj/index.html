@@ -1,37 +1,89 @@
-{% extends 'jobs_proj/base.html' %}
+{% extends "jobs_proj/base.html" %}
 
 {% block content %}
 
+<div class="text-center mb-5">
+
 <h1>
+
 JobFinder
+
 </h1>
 
-<h2>
+<p class="text-secondary">
+
+Знайди свою наступну роботу
+
+</p>
+
+<a
+href="{% url 'vacancies' %}"
+class="btn btn-dark"
+>
+
+Перейти до вакансій
+
+</a>
+
+</div>
+
+
+<h2 class="mb-4">
+
 Останні вакансії
+
 </h2>
+
+
+<div class="row">
 
 {% for vacancy in vacancies %}
 
-<p>
+<div class="col-md-4">
+
+<div class="card p-3 mb-4 shadow">
+
+<h4>
 
 {{ vacancy.title }}
 
+</h4>
+
+<p class="text-secondary">
+
+{{ vacancy.company }}
+
 </p>
-
-{% endfor %}
-
-<h2>
-Останні статті
-</h2>
-
-{% for article in articles %}
 
 <p>
 
-{{ article.title }}
+📍 {{ vacancy.location }}
+
+</p>
+
+<a
+href="{% url 'vacancy_detail' vacancy.id %}"
+class="btn btn-outline-dark"
+>
+
+Детальніше
+
+</a>
+
+</div>
+
+</div>
+
+{% empty %}
+
+<p>
+
+Поки що вакансій немає
 
 </p>
 
 {% endfor %}
+
+</div>
 
 {% endblock %}

@@ -1,15 +1,15 @@
 from django import forms
-from .models import Article
+from .models import Vacancy
 
 
-class ArticleForm(forms.ModelForm):
-
+class VacancyForm(forms.ModelForm):
     class Meta:
-
-        model = Article
-
+        model = Vacancy
         fields = [
             "title",
-            "short_description",
-            "content",
+            "company",
+            "location",
+            "salary",
+            "description",
+            "source_url"
         ]

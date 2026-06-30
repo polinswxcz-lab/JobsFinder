@@ -1,42 +1,138 @@
-{% extends 'jobs_proj/base.html' %}
+{% extends "jobs_proj/base.html" %}
 
 {% block content %}
 
-<h1>
-Всі вакансії
+<h1 class="mb-4">
+Вакансії
 </h1>
 
-{% for vacancy in vacancies %}
 
-<div>
+<form method="get" class="mb-4">
 
-<h2>
-{{ vacancy.title }}
-</h2>
+<div class="input-group">
 
-<p>
-Компанія:
-{{ vacancy.company }}
-</p>
+<input
+class="form-control"
+type="text"
+name="q"
+placeholder="Пошук вакансії..."
+value="{{ search }}"
+>
 
-<p>
-Місто:
-{{ vacancy.location }}
-</p>
-
-<p>
-Зарплата:
-{{ vacancy.salary }}
-</p>
-
-<a href="/vacancy/{{ vacancy.id }}/">
-Детальніше
-</a>
-
-<hr>
+<button
+class="btn btn-dark"
+type="submit"
+>
+Пошук
+</button>
 
 </div>
 
+</form>
+
+
+{% for vacancy in page_obj %}
+
+<div class="card p-4 mb-4 shadow">
+
+<h2>
+
+{{ vacancy.title }}
+
+</h2>
+
+<h5 class="text-secondary">
+
+{{ vacancy.company }}
+
+</h5>
+
+<p>
+
+📍 {{ vacancy.location }}
+
+</p>
+
+<p>
+
+💰 {{ vacancy.salary }}
+
+</p>
+
+<a
+href="{% url 'vacancy_detail' vacancy.id %}"
+class="btn btn-dark"
+>
+
+Детальніше
+
+</a>
+
+</div>
+
+{% empty %}
+
+<h3>
+
+Нічого не знайдено
+
+</h3>
+
 {% endfor %}
+
+
+<div class="mt-4">
+
+{% if page_obj.has_previous %}
+
+<a
+class="btn btn-outline-dark"
+href="?page=1&q={{ search }}"
+>
+Перша
+</a>
+
+<a
+class="btn btn-outline-dark"
+href="?page={{ page_obj.previous_page_number }}&q={{ search }}"
+>
+←
+</a>
+
+{% endif %}
+
+
+<span class="mx-3">
+
+Сторінка
+
+{{ page_obj.number }}
+
+з
+
+{{ page_obj.paginator.num_pages }}
+
+</span>
+
+
+{% if page_obj.has_next %}
+
+<a
+class="btn btn-outline-dark"
+href="?page={{ page_obj.next_page_number }}&q={{ search }}"
+>
+→
+</a>
+
+<a
+class="btn btn-outline-dark"
+href="?page={{ page_obj.paginator.num_pages }}&q={{ search }}"
+>
+Остання
+</a>
+
+{% endif %}
+
+</div>
 
 {% endblock %}
